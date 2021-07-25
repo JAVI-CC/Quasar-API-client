@@ -6,7 +6,7 @@
           width="300px"
           height="400px"
           class="border-bottom"
-          v-bind:src="`${juego.imagen}?t=${dateTime}`"
+          v-bind:src="`${juego.imagen}&t=${dateTime}`"
         />
 
         <q-card-section>

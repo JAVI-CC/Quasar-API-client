@@ -1,0 +1,257 @@
+.div-juego
+  margin-left: 0px
+.div-juego-mobile
+  display: none
+.q-btn-desarrolladora
+  &::v-deep
+    .q-btn__wrapper
+      padding: 0px
+
+.div-juego-mobile
+  display: none
+
+.my-card
+  width: 100%
+  max-width: 302px
+  height: 770px
+  max-height: 770px
+
+.items-start
+  float: left
+
+.border-bottom
+  border-bottom: 1px solid rgb(100, 100, 100)
+
+.border-top
+  border-top: 1px solid rgb(100, 100, 100)
+
+.q-btn-desarrolladora
+  font-size: 12px
+
+.q-btn-juego
+  &::v-deep
+    .q-btn__wrapper
+      padding: 0px
+    .text-center
+      text-align: left
+
+.div-titulo-juego
+  align-items: center
+
+.div-juego-list
+  flex-flow: row wrap
+  box-sizing: border-box
+  display: flex
+  max-height: 100%
+  place-content: stretch space-evenly
+  align-items: stretch
+
+.div-juego-list-ord
+  flex-flow: row wrap
+  box-sizing: border-box
+  display: flex
+  max-height: 100%
+  place-content: stretch flex-start
+  align-items: stretch
+
+.infinite-scroll
+  display: contents
+
+.infinite-scroll
+  &::v-deep
+    .q-infinite-scroll__loading
+      display: contents
+
+.input-desktop-login
+  width: 100%
+
+
+.input-login-password
+  padding-bottom: 40px
+  &::v-deep
+    .q-field__marginal
+      padding-left: 6px
+      padding-right: 6px
+
+.input-login-email
+  padding-bottom: 25px
+  &::v-deep
+    .q-field__marginal
+      padding-left: 6px
+      padding-right: 6px
+
+.q-btn
+    &::v-deep
+      .on-left
+        font-size: 19px
+
+.inputs-add
+  width: 97.75%
+
+.div-selector-generos
+    &::v-deep
+      .q-chip
+        background: #1976D2!Important
+      .q-field__control
+        padding-left: 12px
+      .q-field__prepend
+        padding-right: 18px
+
+.input-icon-padding
+  &::v-deep
+    .q-field__control-container
+      margin-left: 10px
+
+.input-textarea-descripcion
+  &::v-deep
+    .q-field__native
+      min-height: 27px!Important
+
+.add-select-generos-padding
+  padding-bottom: 60px
+  width: 100%
+
+.input-add-form
+  &::v-deep
+    .q-field__marginal
+      padding-left: 6px
+      padding-right: 6px
+
+.input-add-imagen
+  margin-bottom: 0px
+  width: 47.6%
+
+.input-add-imagen
+  &::v-deep
+    .q-field__control
+      padding-left: 18px
+  
+.input-add-fecha
+  width: 47.6%
+  margin-bottom: 44px
+  
+.input-add-fecha  
+  &::v-deep
+    .q-field__control:before
+      border-bottom-style: unset
+
+.input-add-validation-imagen
+  margin-top: 0px
+  margin-left: 0px
+
+.input-add-validation-fecha
+  margin-top: 0px
+  margin-left: 0px
+
+.button-add
+    &::v-deep
+      .on-left
+        margin-right: 6px!Important
+
+@media (max-width: 1445px)
+  .input-add-fecha
+    width: 45.5%
+  .input-add-imagen
+    width: 45.5%
+
+@media (max-width: 1110px)
+.input-add-fecha
+  margin-bottom: 44px
+
+@media (max-width: 900px)
+  .div-add
+    display: block
+  .input-add-fecha
+    width: 97%
+    margin-bottom: 0px
+    padding-bottom: 44px
+  .input-add-imagen
+    width: 97%
+    padding-bottom: 60px
+  .button-add
+    margin-bottom: 44px
+
+@media (max-width: 764px)
+  .q-px-mobile-none
+    padding-left: 0px
+    padding-right: 0px
+  .q-pl-mobile-none
+    padding-left: 0px
+  .q-pr-mobile-none
+    padding-right: 0px
+  .div-juego-list-ord
+    place-content: stretch center
+  .div-padding-login-mobile
+    padding-left: 4px
+    padding-right: 0px
+  .div-margin-login-mobile
+    margin-left: 4px
+    margin-right: 4px
+  .inputs-add
+    width: 100%
+  .div-add-margin-left-none
+    margin-left: 0px
+  .div-add-juego
+    padding-left: 0px
+    padding-right: 16px
+  .add-select-generos-padding
+    width: 102.34%
+  .input-add-fecha
+    width: 100%
+  .input-add-imagen
+    width: 100%
+  .my-card-add
+    height: 770px!Important
+    max-height: 770px!Important
+  .div-vista-previa
+    padding-left: 16px
+
+@media (max-width: 760px)
+  .div-juego-desktop
+    display: none
+
+  .div-juego-mobile
+    display: flex
+
+  .display-inline-flex
+    display: inline-flex
+
+  .my-card
+    height: auto
+    max-height: unset
+    margin-bottom: 5px
+    &::v-deep
+      .q-card__section
+        padding-bottom: 0px
+
+@media (max-width: 580px)
+  .toolbar-mobile-none
+    display: none
+
+@media (max-width: 538px)
+  .q-btn
+    &::v-deep
+      .on-left
+        margin-right: 0px
+
+@media (max-width: 470px)
+  .layout-padding-mobile
+    padding-left: 0px
+    padding-right: 0px
+    padding-top: 5px
+  .add-select-generos-padding
+    width: 105%
+  .q-btn
+    &::v-deep
+      .on-left
+        margin-right: 8px
+
+@media (max-width: 440px)
+  .q-btn
+    &::v-deep
+      .on-left
+        margin-right: 0px
+
+@media (max-width: 365px)
+  .div-vista-previa
+    padding-left: 10px

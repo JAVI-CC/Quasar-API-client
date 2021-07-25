@@ -148,7 +148,7 @@ export default {
       });
     },
     infoUrl() {
-      window.open("https://www.github.com/JAVI-CC", "_blank");
+      window.open("https://github.com/JAVI-CC/Quasar-Vuejs-API-client", "_blank");
     },
     ...mapActions({
       _fetchJuegos: "juegos/fetchJuegos",

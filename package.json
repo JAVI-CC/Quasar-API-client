@@ -6,10 +6,7 @@
   "author": "JAVI-CC",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
-    "build": "quasar build",
-    "start": "node server.js",
-    "heroku-postbuild": "yarn && yarn build"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",

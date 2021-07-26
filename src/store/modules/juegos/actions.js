@@ -18,6 +18,26 @@ export async function fetchJuegos({ commit }) {
         })
 }
 
+export async function fetchJuegosPageOrder({ commit }, paginate) {
+    if(paginate.paginate <= 1) {
+      this._vm.$q.loading.show({ spinnerSize: 140, message: 'Cargando...', backgroundColor: 'dark' })
+    }
+
+    return api.get(`/api/juegos/paginate?page=${paginate.paginate}&items=8&order=${paginate.order}`)
+        .then(response => {
+            commit('juegos/setJuegosPageOrder', {juegos: response.data, order: paginate.order, pagination: paginate.paginate}, { root: true })
+            if(paginate.paginate <= 1) {
+              this._vm.$q.loading.hide();
+            }
+        })
+        .catch((e) => {
+            commit('juegos/JuegosError', e.message, { root: true })
+        })
+        .finally(() => {
+            console.log('La petición para obtener los juegos ha finalizado')
+        })
+}
+
 export async function fetchJuegosPage({ commit }, paginate) {
     return api.get(`/api/juegos/paginate?page=${paginate}&items=8`)
         .then(response => {

@@ -28,6 +28,7 @@ export default {
   delete: false,
   editSlug: '',
   search: '',
+  order: '',
   type: '',
   paginate: 2,
   paginateactive: true,

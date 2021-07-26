@@ -6,7 +6,7 @@
           width="300px"
           height="400px"
           class="border-bottom"
-          v-bind:src="`${juego.imagen}&t=${dateTime}`"
+          v-bind:src="`${juego.imagen}`"
         />
 
         <q-card-section>
@@ -124,7 +124,7 @@
         <q-slide-transition class="div-juego-mobile">
           <div v-show="expanded">
             <q-separator />
-            <div class="q-pt-md q-pl-md q-pr-md q-pb-sm">
+            <div class="q-pt-md q-pl-md q-pr-md q-pb-sm" style="width:100%">
               <q-btn
                 class="
                   q-btn-desarrolladora
@@ -240,7 +240,6 @@ export default {
       expandedText: "Mostrar información",
       //inView: Array.apply(null, Array(50)).map((_) => false),
       deleteJuego: false,
-      dateTime: new Date().getTime(),
     };
   },
   props: {

@@ -148,7 +148,10 @@ export default {
       });
     },
     infoUrl() {
-      window.open("https://github.com/JAVI-CC/Quasar-Vuejs-API-client", "_blank");
+      window.open(
+        "https://github.com/JAVI-CC/Quasar-Vuejs-API-client",
+        "_blank"
+      );
     },
     ...mapActions({
       _fetchJuegos: "juegos/fetchJuegos",
@@ -161,18 +164,20 @@ export default {
       this._fetchJuegos();
     },
     searchJuegos() {
-      let search = {
-        search: this.search,
-        type: this.$store.getters["juegos/type"],
-      };
-      this._searchJuegos(search).then(() => {
-        if (this.$route.fullPath != "/") {
-          this.$router.push({
-            name: "juegos-search",
-            params: { search: this.search },
-          });
-        }
-      });
+      if (this.search != "") {
+        let search = {
+          search: this.search,
+          type: this.$store.getters["juegos/type"],
+        };
+        this._searchJuegos(search).then(() => {
+          if (this.$route.fullPath != "/") {
+            this.$router.push({
+              name: "juegos-search",
+              params: { search: this.search },
+            });
+          }
+        });
+      }
     },
     shareViaWebShare() {
       let url = "";

@@ -335,13 +335,13 @@ export default {
           this.alert = true;
           return true;
         } else if (this.$store.state.juegos.add === true) {
+          this.$router.push({ name: "juegos" });
           this.$q.notify({
             type: "positive",
             position: "top",
             icon: "check_circle",
             message: `El juego ${this.nombre} se ha creado correctamente!`,
           });
-          this.$router.push({ name: "juegos" });
         }
       });
     },

@@ -41,7 +41,7 @@
       >
         <q-img
           class="div-juego-mobile"
-          v-bind:src="`${juegos.imagen}?t=${new Date().getTime()}`"
+          v-bind:src="`${juegos.imagen}`"
           width="308px"
           height="420px"
         />
@@ -49,7 +49,7 @@
           <q-card-section horizontal>
             <q-img
               class="col-5 div-juego-desktop"
-              v-bind:src="`${juegos.imagen}?t=${new Date().getTime()}`"
+              v-bind:src="`${juegos.imagen}`"
               width="300px"
               height="400px"
             />

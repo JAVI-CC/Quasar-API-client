@@ -4,6 +4,7 @@ export function setJuegos(state, juegos) {
     state.juegos = juegos;
     state.genero = '';
     state.search = '';
+    state.order = '';
     state.desarrolladora = '';
     state.paginate = 2;
     state.errorMessage = '';
@@ -39,6 +40,26 @@ export function setJuegosPage(state, juegos) {
     }
     state.paginate = state.paginate + 1;
     state.showcomponent = true;
+}
+
+export function setJuegosPageOrder(state, {juegos, order, pagination}) {
+  if(pagination > 1){
+    state.juegos = state.juegos.concat(juegos);
+    state.paginate = state.paginate + 1;
+  } else {
+    state.juegos = juegos;
+    state.paginate = 2;
+  }
+  state.order = order;
+  state.genero = '';
+  state.search = '';
+  state.desarrolladora = '';
+  if (juegos.length > 0) {
+      state.paginateactive = true;
+  } else {
+      state.paginateactive = false;
+  }
+  state.showcomponent = true;
 }
 
 export function setJuegosSearch(state, { juegos, search, type }) {

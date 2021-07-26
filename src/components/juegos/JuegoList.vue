@@ -27,7 +27,7 @@
 
 <script>
 import JuegoItem from "./JuegoItem.vue";
-import JuegoNotFound from "./JuegoNotFound.vue"
+import JuegoNotFound from "./JuegoNotFound.vue";
 import { mapActions } from "vuex";
 
 export default {
@@ -49,11 +49,20 @@ export default {
   methods: {
     ...mapActions({
       _fetchJuegosPage: "juegos/fetchJuegosPage",
+      _fetchJuegosPageOrder: "juegos/fetchJuegosPageOrder",
     }),
     onLoad(index, done) {
       setTimeout(() => {
         if (this.$store.state.juegos.paginateactive != false) {
-          this._fetchJuegosPage(this.$store.state.juegos.paginate);
+          if (this.$store.state.juegos.order === "") {
+            this._fetchJuegosPage(this.$store.state.juegos.paginate);
+          } else {
+            let paginate = {
+              paginate: this.$store.state.juegos.paginate,
+              order: this.$store.state.juegos.order,
+            };
+            this._fetchJuegosPageOrder(paginate);
+          }
           done();
         } else {
           //done(true) para eliminar el icono de cargando

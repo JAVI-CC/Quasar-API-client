@@ -1,5 +1,7 @@
 <template>
-  <div class="q-mt-xl q-pl-xl item-order-mobile-juegoorder item-order-juegoorder">
+  <div
+    class="q-mt-xl q-pl-xl item-order-mobile-juegoorder item-order-juegoorder"
+  >
     <div class="q-gutter-md q-pl-md q-pl-33-order">
       <!-- <q-badge color="secondary" multi-line> Model: "{{ selected }}" </q-badge> -->
 
@@ -66,14 +68,33 @@ export default {
     onChange(event) {
       event === null ? (event = 0) : (event = event.value);
 
-      let search = {
-        search: this.$store.getters["juegos/search"],
-        type: event,
-      };
-      this._searchJuegos(search);
+      if (this.$store.getters["juegos/search"] != "") {
+        let search = {
+          search: this.$store.getters["juegos/search"],
+          type: event,
+        };
+        this._searchJuegos(search);
+      } else {
+        let order = ''
+        if (event == 1) {
+          order = "nombreAsc";
+        } else if (event == 2) {
+          order = "nombreDesc";
+        } else if (event == 3) {
+          order = "fechaAsc";
+        } else if (event == 4) {
+          order = "fechaDesc";
+        }
+        let paginate = {
+          paginate: 1,
+          order: order,
+        };
+        this._fetchJuegosPageOrder(paginate);
+      }
     },
     ...mapActions({
       _searchJuegos: "juegos/searchJuegos",
+      _fetchJuegosPageOrder: "juegos/fetchJuegosPageOrder",
     }),
   },
 };

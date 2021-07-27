@@ -148,10 +148,7 @@ export default {
       });
     },
     infoUrl() {
-      window.open(
-        "https://github.com/JAVI-CC/Quasar-API-client",
-        "_blank"
-      );
+      window.open("https://github.com/JAVI-CC/Quasar-API-client", "_blank");
     },
     ...mapActions({
       _fetchJuegos: "juegos/fetchJuegos",
@@ -189,11 +186,20 @@ export default {
         url = "search/" + this.$store.getters["juegos/search"];
       }
 
-      navigator.share({
-        title: "JAVI-CC JUEGOS API",
-        text: "Vuejs client connected to laravel api server",
-        url: url,
-      });
+      fetch('/icons/favicon-32x32.png')
+        .then(function (response) {
+          return response.blob();
+        })
+        .then(function (blob) {
+          var file = new File([blob], "picture.jpg", { type: "image/jpeg" });
+          var filesArray = [file];
+          navigator.share({
+            title: "JAVI-CC JUEGOS API",
+            text: "Quasar vuejs client connected to laravel api server",
+            url: url,
+            files: filesArray,
+          });
+        });
     },
   },
 };

@@ -203,8 +203,8 @@ export default {
     }),
     shareViaWebShare() {
       navigator.share({
-        title: this.juegos.nombre,
-        text: this.juegos.descripcion,
+        title: "JAVI-CC JUEGOS API",
+        text: this.juegos.nombre,
         url: this.juegos.slug,
       });
     },

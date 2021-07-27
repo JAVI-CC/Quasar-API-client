@@ -68,7 +68,7 @@ export default {
           //done(true) para eliminar el icono de cargando
           done();
         }
-      }, 2000);
+      }, 5000);
     },
   },
 };

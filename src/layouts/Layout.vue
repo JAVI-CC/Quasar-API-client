@@ -149,7 +149,7 @@ export default {
     },
     infoUrl() {
       window.open(
-        "https://github.com/JAVI-CC/Quasar-Vuejs-API-client",
+        "https://github.com/JAVI-CC/Quasar-API-client",
         "_blank"
       );
     },

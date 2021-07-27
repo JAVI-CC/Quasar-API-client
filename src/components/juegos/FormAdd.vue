@@ -247,17 +247,18 @@
         </div>
       </div>
     </div>
+    <button-top></button-top>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import FormAddChild from "src/components/juegos/FormAddChild.vue";
-//const stringOptions = this.$store.getters["juegos/generos"];
-//const stringOptions = ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle']
+import ButtonTop from "./ButtonTop.vue";
 export default {
   components: {
     FormAddChild,
+    ButtonTop,
   },
   data() {
     return {

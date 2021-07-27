@@ -22,18 +22,21 @@
     <div v-else>
       <juego-not-found></juego-not-found>
     </div>
+    <button-top></button-top>
   </div>
 </template>
 
 <script>
 import JuegoItem from "./JuegoItem.vue";
 import JuegoNotFound from "./JuegoNotFound.vue";
+import ButtonTop from "./ButtonTop.vue";
 import { mapActions } from "vuex";
 
 export default {
   components: {
     JuegoItem,
     JuegoNotFound,
+    ButtonTop
   },
   data() {
     return {

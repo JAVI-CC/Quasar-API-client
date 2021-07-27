@@ -20,7 +20,7 @@
             />
           </q-avatar>
         </q-item>
-        <q-toolbar-title
+        <q-toolbar-title class="header-title-padding"
           ><span class="toolbar-mobile-none"
             >JAVI-CC JUEGOS API</span
           ></q-toolbar-title

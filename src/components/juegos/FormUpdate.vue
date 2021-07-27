@@ -248,17 +248,18 @@
         </div>
       </div>
     </div>
+    <button-top></button-top>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import FormUpdateChild from "src/components/juegos/FormUpdateChild.vue";
-//const stringOptions = this.$store.getters["juegos/generos"];
-//const stringOptions = ['Google', 'Facebook', 'Twitter', 'Apple', 'Oracle']
+import ButtonTop from "./ButtonTop.vue";
 export default {
   components: {
     FormUpdateChild,
+    ButtonTop,
   },
   data() {
     return {
@@ -392,9 +393,9 @@ export default {
           for (var i = 0; i < this.selectGeneros.length; i++) {
             generoArr.push(this.sanitizeTitle(this.selectGeneros[i]));
           }
-          juegoObj.generos = generoArr
+          juegoObj.generos = generoArr;
         }
-        if (this.fecha != null  && this.fecha != "") {
+        if (this.fecha != null && this.fecha != "") {
           juegoObj.fecha = this.fecha;
         }
         this._updateJuegoWithoutImage(juegoObj).then(() => {

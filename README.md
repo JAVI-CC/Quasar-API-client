@@ -35,7 +35,7 @@
 <pre>
 <code>$ git clone https://github.com/JAVI-CC/Quasar-API-client.git
 $ cd Quasar-API-client
-$ docker-compose up -d --build -m pwa</code>
+$ docker-compose up -d --build</code>
 </pre>
 
 <span>Once you have the containers deployed, you can access the API at </span> <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>

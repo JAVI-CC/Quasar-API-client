@@ -15,8 +15,8 @@
         >
           <q-avatar>
             <img
-              style="width: 31px; height: 31px"
-              :src="'/icons/favicon-32x32.png'"
+              style="width: 32px; height: 32px"
+              :src="'/icons/favicon-128x128.png'"
             />
           </q-avatar>
         </q-item>

@@ -11,7 +11,7 @@
 <pre><code>$ npm install && quasar build -m pwa</code></pre>
 
 <h2>Demo</h2>
-<a href="https://quasar-api-client.vercel.app/" target="_blank">https://quasar-api-client.vercel.app/</a><br>
+<a href="https://quasar-api-client.vercel.app/" target="_blank">https://quasar-api-client.vercel.app</a><br>
 <span>User: admin@email.com</span><br>
 <span>Password: 12345678</span>
 

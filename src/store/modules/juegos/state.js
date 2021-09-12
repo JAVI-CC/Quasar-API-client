@@ -26,7 +26,6 @@ export default {
   add: false,
   edit: false,
   delete: false,
-  editSlug: '',
   search: '',
   order: '',
   type: '',

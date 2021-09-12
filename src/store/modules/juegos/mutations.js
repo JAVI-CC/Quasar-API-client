@@ -140,7 +140,6 @@ export function setEditJuego(state, juego) {
   if(juego.juego.slug != null) {
     state.errorEdit = false
     state.edit = true
-    state.editSlug = juego.juego.slug
   } else {
     state.errorEdit = true
     state.edit = false

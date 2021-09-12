@@ -255,11 +255,13 @@
 import { mapActions, mapGetters } from "vuex";
 import FormAddChild from "src/components/juegos/FormAddChild.vue";
 import ButtonTop from "./ButtonTop.vue";
+import MixinsApp from "src/mixins/App";
 export default {
   components: {
     FormAddChild,
     ButtonTop,
   },
+  mixins: [MixinsApp],
   data() {
     return {
       nombre: "",
@@ -336,7 +338,10 @@ export default {
           this.alert = true;
           return true;
         } else if (this.$store.state.juegos.add === true) {
-          this.$router.push({ name: "juegos" });
+          this.$router.push({
+            name: "juego-unique",
+            params: { juego: this.sanitizeTitle(this.nombre) },
+          });
           this.$q.notify({
             type: "positive",
             position: "top",
@@ -345,27 +350,6 @@ export default {
           });
         }
       });
-    },
-    sanitizeTitle: function (title) {
-      var slug = "";
-      // Change to lower case
-      var titleLower = title.toLowerCase();
-      // Letter "e"
-      slug = titleLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, "e");
-      // Letter "a"
-      slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, "a");
-      // Letter "o"
-      slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, "o");
-      // Letter "u"
-      slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, "u");
-      // Letter "d"
-      slug = slug.replace(/đ/gi, "d");
-      // Trim the last whitespace
-      slug = slug.replace(/\s*$/g, "");
-      // Change whitespace to "-"
-      slug = slug.replace(/\s+/g, "-");
-
-      return slug;
     },
   },
   computed: {

@@ -185,7 +185,7 @@ export async function fetchGeneros({ commit }) {
 export async function addJuego({ commit }, juego) {
     this._vm.$q.loading.show({ spinnerSize: 140, message: 'Insertando juego...', backgroundColor: 'dark' })
 
-    return api.post(`/api/juegos`, juego, { headers: { 'Authorization': Cookies.get('token'), 'content-type': 'multipart/form-data' } })
+    return api.post(`/api/juegos`, juego, { headers: { 'Authorization': Cookies.get('token') } })
         .then(response => {
             commit('juegos/setAddJuego', { juego: response.data }, { root: true })
             this._vm.$q.loading.hide();
@@ -199,27 +199,10 @@ export async function addJuego({ commit }, juego) {
         })
 }
 
-export async function updateJuegoWithImage({ commit }, juego) {
+export async function updateJuego({ commit }, juego) {
     this._vm.$q.loading.show({ spinnerSize: 140, message: 'Actualizando juego...', backgroundColor: 'dark' })
 
-    return api.post(`/api/juegos/edit`, juego, { headers: { 'Authorization': Cookies.get('token'), 'content-type': 'multipart/form-data' } })
-        .then(response => {
-            commit('juegos/setEditJuego', { juego: response.data }, { root: true })
-            this._vm.$q.loading.hide();
-        })
-        .catch((e) => {
-            commit('juegos/JuegosError', e.message, { root: true })
-            this._vm.$q.loading.hide();
-        })
-        .finally(() => {
-            console.log('La petición para actualizar el juego: ' + juego.nombre + ' ha finalizado')
-        })
-}
-
-export async function updateJuegoWithoutImage({ commit }, juego) {
-    this._vm.$q.loading.show({ spinnerSize: 140, message: 'Actualizando juego...', backgroundColor: 'dark' })
-
-    return api.put(`/api/juegos/edit`, juego, { headers: { 'Authorization': Cookies.get('token') } })
+    return api.post(`/api/juegos/edit`, juego, { headers: { 'Authorization': Cookies.get('token') } })
         .then(response => {
             commit('juegos/setEditJuego', { juego: response.data }, { root: true })
             this._vm.$q.loading.hide();

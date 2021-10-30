@@ -319,16 +319,19 @@ export default {
       }
     },
     addJuego() {
-      let juego = new FormData();
-      juego.append("nombre", this.nombre);
-      juego.append("desarrolladora", this.desarrolladora);
-      juego.append("descripcion", this.descripcion);
-
+     
       for (var i = 0; i < this.selectGeneros.length; i++) {
-        juego.append("generos[]", this.sanitizeTitle(this.selectGeneros[i]));
+        this.selectGeneros[i] = this.sanitizeTitle(this.selectGeneros[i]);
       }
-      juego.append("fecha", this.fecha);
-      juego.append("imagen", this.imagen);
+      
+      let juego = {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        desarrolladora: this.desarrolladora,
+        generos: this.selectGeneros,
+        fecha: this.fecha,
+        imagen: this.imageData,
+      }
 
       this._addJuego(juego).then(() => {
         if (

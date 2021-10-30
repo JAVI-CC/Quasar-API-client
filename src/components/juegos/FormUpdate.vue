@@ -292,8 +292,7 @@ export default {
   methods: {
     ...mapActions({
       _fetchGeneros: "juegos/fetchGeneros",
-      _updateJuegoWithImage: "juegos/updateJuegoWithImage",
-      _updateJuegoWithoutImage: "juegos/updateJuegoWithoutImage",
+      _updateJuego: "juegos/updateJuego",
     }),
     filterFn(val, update) {
       update(() => {
@@ -330,94 +329,41 @@ export default {
       }
     },
     editJuego() {
-      if (this.imagen != null) {
-        let juego = new FormData();
-        juego.append("imagen", this.imagen);
-        juego.append("slug", this.juegos.slug);
-        if (this.nombre != null) {
-          juego.append("nombre", this.nombre);
-        }
-        if (this.desarrolladora != null) {
-          juego.append("desarrolladora", this.desarrolladora);
-        }
-        if (this.descripcion != null) {
-          juego.append("descripcion", this.descripcion);
-        }
-        if (this.selectGeneros != null) {
-          for (var i = 0; i < this.selectGeneros.length; i++) {
-            juego.append(
-              "generos[]",
-              this.sanitizeTitle(this.selectGeneros[i])
-            );
-          }
-        }
-        if (this.fecha != null && this.fecha != "") {
-          juego.append("fecha", this.fecha);
-        }
 
-        this._updateJuegoWithImage(juego).then(() => {
-          if (
-            this.$store.state.juegos.edit === false &&
-            this.$store.state.juegos.errorEdit === true
-          ) {
-            this.alert = true;
-            return true;
-          } else if (this.$store.state.juegos.edit === true) {
-            this.$q.notify({
-              type: "positive",
-              position: "top",
-              icon: "check_circle",
-              message: `El juego se ha actualizado correctamente!`,
-            });
-            this.$router.push({
-              name: "juego-unique",
-              params: { juego: this.sanitizeTitle(this.nombre) },
-            });
-          }
-        });
-      } else {
-        let juegoObj = {};
-        juegoObj.slug = this.juegos.slug;
-        if (this.nombre != null) {
-          juegoObj.nombre = this.nombre;
-        }
-        if (this.desarrolladora != null) {
-          juegoObj.desarrolladora = this.desarrolladora;
-        }
-        if (this.descripcion != null) {
-          juegoObj.descripcion = this.descripcion;
-        }
-        if (this.selectGeneros != null && this.selectGeneros.length > 0) {
-          let generoArr = [];
-          for (var i = 0; i < this.selectGeneros.length; i++) {
-            generoArr.push(this.sanitizeTitle(this.selectGeneros[i]));
-          }
-          juegoObj.generos = generoArr;
-        }
-        if (this.fecha != null && this.fecha != "") {
-          juegoObj.fecha = this.fecha;
-        }
-        this._updateJuegoWithoutImage(juegoObj).then(() => {
-          if (
-            this.$store.state.juegos.edit === false &&
-            this.$store.state.juegos.errorEdit === true
-          ) {
-            this.alert = true;
-            return true;
-          } else if (this.$store.state.juegos.edit === true) {
-            this.$q.notify({
-              type: "positive",
-              position: "top",
-              icon: "check_circle",
-              message: `El juego se ha actualizado correctamente!`,
-            });
-            this.$router.push({
-              name: "juego-unique",
-              params: { juego: this.sanitizeTitle(this.nombre) },
-            });
-          }
-        });
+      for (var i = 0; i < this.selectGeneros.length; i++) {
+        this.selectGeneros[i] = this.sanitizeTitle(this.selectGeneros[i]);
       }
+
+      let juegoObj = {
+        nombre: this.nombre,
+        descripcion: this.descripcion,
+        desarrolladora: this.desarrolladora,
+        generos: this.selectGeneros,
+        fecha: this.fecha,
+        imagen: this.imageData.startsWith("data:image") ? this.imageData : null,
+        slug: this.juegos.slug,
+      };
+
+      this._updateJuego(juegoObj).then(() => {
+        if (
+          this.$store.state.juegos.edit === false &&
+          this.$store.state.juegos.errorEdit === true
+        ) {
+          this.alert = true;
+          return true;
+        } else if (this.$store.state.juegos.edit === true) {
+          this.$q.notify({
+            type: "positive",
+            position: "top",
+            icon: "check_circle",
+            message: `El juego se ha actualizado correctamente!`,
+          });
+          this.$router.push({
+            name: "juego-unique",
+            params: { juego: this.sanitizeTitle(this.nombre) },
+          });
+        }
+      });
     },
   },
   computed: {

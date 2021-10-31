@@ -36,22 +36,26 @@
                 rules="required|min:2|max:255"
                 v-slot="v"
               >
-                <q-input
-                  validateOnInput
+                <q-select
                   filled
-                  clearable
+                  :value="desarrolladora"
                   label="Desarrolladora"
                   name="desarrolladora"
-                  type="text"
-                  v-model="desarrolladora"
+                  use-input
+                  hide-selected
+                  fill-input
+                  input-debounce="0"
+                  :options="filterOptionsDesarrolladora"
+                  @filter="filterFnDesarrolladora"
+                  @input-value="setDesarrolladora"
+                  class="q-mb-md q-ml-md inputs-add"
                   :error="v.errors.length > 0"
                   :error-message="v.errors[0]"
-                  class="q-mb-lg q-ml-md inputs-add"
                 >
                   <template v-slot:prepend>
                     <q-icon name="supervised_user_circle" />
                   </template>
-                </q-input>
+                </q-select>
               </ValidationProvider>
 
               <ValidationProvider
@@ -274,13 +278,17 @@ export default {
       selectGeneros: null,
       alert: false,
       filterOptions: this.$store.getters["juegos/generos"],
+      filterOptionsDesarrolladora:
+        this.$store.getters["juegos/desarrolladoras"],
     };
   },
   created() {
+    this._fetchDesarrolladoras();
     this._fetchGeneros();
   },
   methods: {
     ...mapActions({
+      _fetchDesarrolladoras: "juegos/fetchDesarrolladoras",
       _fetchGeneros: "juegos/fetchGeneros",
       _addJuego: "juegos/addJuego",
     }),
@@ -319,11 +327,10 @@ export default {
       }
     },
     addJuego() {
-     
       for (var i = 0; i < this.selectGeneros.length; i++) {
         this.selectGeneros[i] = this.sanitizeTitle(this.selectGeneros[i]);
       }
-      
+
       let juego = {
         nombre: this.nombre,
         descripcion: this.descripcion,
@@ -331,7 +338,7 @@ export default {
         generos: this.selectGeneros,
         fecha: this.fecha,
         imagen: this.imageData,
-      }
+      };
 
       this._addJuego(juego).then(() => {
         if (
@@ -356,7 +363,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("juegos", ["generos"]),
+    ...mapGetters("juegos", ["generos", "desarrolladoras"]),
     isComplete() {
       return (
         this.nombre &&

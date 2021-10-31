@@ -22,6 +22,10 @@ export function paginate (state) {
     return state.paginate
 }
 
+export function desarrolladoras (state) {
+    return state.desarrolladoras
+}
+
 export function generos (state) {
     return state.generos
 }

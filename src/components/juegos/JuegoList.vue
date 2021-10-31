@@ -54,24 +54,24 @@ export default {
       _fetchJuegosPage: "juegos/fetchJuegosPage",
       _fetchJuegosPageOrder: "juegos/fetchJuegosPageOrder",
     }),
-    onLoad(index, done) {
-      setTimeout(() => {
+    async onLoad(index, done) {
+      
         if (this.$store.state.juegos.paginateactive != false) {
           if (this.$store.state.juegos.order === "") {
-            this._fetchJuegosPage(this.$store.state.juegos.paginate);
+            await this._fetchJuegosPage(this.$store.state.juegos.paginate);
           } else {
             let paginate = {
               paginate: this.$store.state.juegos.paginate,
               order: this.$store.state.juegos.order,
             };
-            this._fetchJuegosPageOrder(paginate);
+             await this._fetchJuegosPageOrder(paginate);
           }
           done();
         } else {
           //done(true) para eliminar el icono de cargando
           done();
         }
-      }, 5000);
+   
     },
   },
 };

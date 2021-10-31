@@ -12,6 +12,7 @@ if(Cookies.get('token')) {
 export default {
   juegos: [],
   juego: [],
+  desarrolladoras: [],
   generos: [],
   error: false,
   login: login,

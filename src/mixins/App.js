@@ -27,6 +27,24 @@ export default {
 
             return slug;
         },
+
+        filterFnDesarrolladora(val, update, abort) {
+            update(() => {
+                const needle = val.toLocaleLowerCase();
+                var options = this.$store.getters["juegos/desarrolladoras"];
+                var stringOptions = options.map(function (obj) {
+                    return obj.nombre;
+                });
+                this.filterOptionsDesarrolladora = stringOptions.filter(
+                    (v) => v.toLocaleLowerCase().indexOf(needle) > -1
+                );
+                console.log(this.options);
+            });
+        },
+
+        setDesarrolladora(val) {
+            this.desarrolladora = val;
+        },
     },
     computed: {
 

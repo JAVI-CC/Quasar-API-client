@@ -103,6 +103,10 @@ export function setGeneros(state, generos) {
     state.generos = generos
 }
 
+export function setDesarrolladoras(state, desarrolladoras) {
+  state.desarrolladoras = desarrolladoras
+}
+
 export function setLogin(state, login) {
     
     if(login.token != null) {

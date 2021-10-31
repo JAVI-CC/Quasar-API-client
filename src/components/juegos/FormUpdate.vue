@@ -33,25 +33,29 @@
               <ValidationProvider
                 name="desarrolladora"
                 class="input-add-form input-icon-padding"
-                rules="min:2|max:255"
+                rules="required|min:2|max:255"
                 v-slot="v"
               >
-                <q-input
-                  validateOnInput
+                <q-select
                   filled
-                  clearable
+                  :value="desarrolladora"
                   label="Desarrolladora"
                   name="desarrolladora"
-                  type="text"
-                  v-model="desarrolladora"
+                  use-input
+                  hide-selected
+                  fill-input
+                  input-debounce="0"
+                  :options="filterOptionsDesarrolladora"
+                  @filter="filterFnDesarrolladora"
+                  @input-value="setDesarrolladora"
+                  class="q-mb-md q-ml-md inputs-add"
                   :error="v.errors.length > 0"
                   :error-message="v.errors[0]"
-                  class="q-mb-lg q-ml-md inputs-add"
                 >
                   <template v-slot:prepend>
                     <q-icon name="supervised_user_circle" />
                   </template>
-                </q-input>
+                </q-select>
               </ValidationProvider>
 
               <ValidationProvider
@@ -275,9 +279,12 @@ export default {
       selectGeneros: this.juegos.generos,
       alert: false,
       filterOptions: this.$store.getters["juegos/generos"],
+      filterOptionsDesarrolladora:
+        this.$store.getters["juegos/desarrolladoras"],
     };
   },
   created() {
+    this._fetchDesarrolladoras();
     this._fetchGeneros();
     this.selectGeneros = this.selectGeneros.map(function (obj) {
       return obj.nombre;
@@ -292,6 +299,7 @@ export default {
   methods: {
     ...mapActions({
       _fetchGeneros: "juegos/fetchGeneros",
+      _fetchDesarrolladoras: "juegos/fetchDesarrolladoras",
       _updateJuego: "juegos/updateJuego",
     }),
     filterFn(val, update) {
@@ -329,7 +337,6 @@ export default {
       }
     },
     editJuego() {
-
       for (var i = 0; i < this.selectGeneros.length; i++) {
         this.selectGeneros[i] = this.sanitizeTitle(this.selectGeneros[i]);
       }
@@ -367,7 +374,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("juegos", ["generos"]),
+    ...mapGetters("juegos", ["generos", "desarrolladoras"]),
     isComplete() {
       return (
         this.nombre &&

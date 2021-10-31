@@ -5,7 +5,7 @@ import { Cookies } from 'quasar'
 export async function fetchJuegos({ commit }) {
     this._vm.$q.loading.show({ spinnerSize: 140, message: 'Cargando...', backgroundColor: 'dark' })
 
-    return api.get(`/api/juegos/paginate?page=1&items=8`)
+    return await api.get(`/api/juegos/paginate?page=1&items=8`)
         .then(response => {
             commit('juegos/setJuegos', response.data, { root: true })
             this._vm.$q.loading.hide();
@@ -23,7 +23,7 @@ export async function fetchJuegosPageOrder({ commit }, paginate) {
       this._vm.$q.loading.show({ spinnerSize: 140, message: 'Cargando...', backgroundColor: 'dark' })
     }
 
-    return api.get(`/api/juegos/paginate?page=${paginate.paginate}&items=8&order=${paginate.order}`)
+    return await api.get(`/api/juegos/paginate?page=${paginate.paginate}&items=8&order=${paginate.order}`)
         .then(response => {
             commit('juegos/setJuegosPageOrder', {juegos: response.data, order: paginate.order, pagination: paginate.paginate}, { root: true })
             if(paginate.paginate <= 1) {
@@ -39,7 +39,7 @@ export async function fetchJuegosPageOrder({ commit }, paginate) {
 }
 
 export async function fetchJuegosPage({ commit }, paginate) {
-    return api.get(`/api/juegos/paginate?page=${paginate}&items=8`)
+    return await api.get(`/api/juegos/paginate?page=${paginate}&items=8`)
         .then(response => {
             commit('juegos/setJuegosPage', response.data, { root: true })
         })
@@ -54,7 +54,7 @@ export async function fetchJuegosPage({ commit }, paginate) {
 export async function fetchJuegosGenero({ commit }, genero) {
     this._vm.$q.loading.show({ spinnerSize: 140, message: 'Cargando...', backgroundColor: 'dark' })
 
-    return api.get(`/api/juegos/generos/${genero}`)
+    return await api.get(`/api/juegos/generos/${genero}`)
         .then(response => {
             response = response.data
             commit('juegos/setJuegosGenero', { juegos: response, genero }, { root: true })
@@ -71,7 +71,7 @@ export async function fetchJuegosGenero({ commit }, genero) {
 export async function fetchJuegosDesarrolladora({ commit }, desarrolladora) {
     this._vm.$q.loading.show({ spinnerSize: 140, message: 'Cargando...', backgroundColor: 'dark' })
 
-    return api.get(`/api/juegos/desarrolladoras/${desarrolladora}`)
+    return await api.get(`/api/juegos/desarrolladoras/${desarrolladora}`)
         .then(response => {
             response = response.data
             commit('juegos/setJuegosDesarrolladora', { juegos: response, desarrolladora }, { root: true })
@@ -104,7 +104,7 @@ export async function searchJuegos({ commit }, search) {
     }
 
     search = search.search;
-    return api.post(`/api/juegos/filter/search`, { search, filter, order })
+    return await api.post(`/api/juegos/filter/search`, { search, filter, order })
         .then(response => {
             response = response.data
             commit('juegos/setJuegosSearch', { juegos: response, search, filter, order }, { root: true })
@@ -121,7 +121,7 @@ export async function searchJuegos({ commit }, search) {
 export async function getJuego({ commit }, slug) {
     this._vm.$q.loading.show({ spinnerSize: 140, message: 'Cargando...', backgroundColor: 'dark' })
 
-    return api.get(`/api/juegos/${slug}`)
+    return await api.get(`/api/juegos/${slug}`)
         .then(response => {
             commit('juegos/setJuego', response.data, { root: true })
             this._vm.$q.loading.hide();
@@ -178,7 +178,22 @@ export async function fetchGeneros({ commit }) {
             commit('juegos/JuegosError', e.message, { root: true })
         })
         .finally(() => {
-            console.log('La petición para obtener los juegos ha finalizado')
+            console.log('La petición para obtener los generos ha finalizado')
+        })
+}
+
+export async function fetchDesarrolladoras({ commit }) {
+
+    return api.get(`/api/juegos/desarrolladoras/show/all`)
+        .then(response => {
+            commit('juegos/setDesarrolladoras', response.data, { root: true })
+            this._vm.$q.loading.hide();
+        })
+        .catch((e) => {
+            commit('juegos/JuegosError', e.message, { root: true })
+        })
+        .finally(() => {
+            console.log('La petición para obtener las desarrolladoras ha finalizado')
         })
 }
 

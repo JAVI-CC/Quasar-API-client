@@ -75,7 +75,7 @@
                   v-model="descripcion"
                   :error="v.errors.length > 0"
                   :error-message="v.errors[0]"
-                  class="q-mb-lg q-ml-md input-textarea-descripcion inputs-add"
+                  class="q-mb-md q-ml-md input-textarea-descripcion inputs-add"
                 >
                   <template v-slot:prepend>
                     <q-icon name="text_fields" />

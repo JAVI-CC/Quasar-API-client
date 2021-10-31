@@ -16,6 +16,8 @@ export default {
             slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, "u");
             // Letter "&"
             slug = slug.replace(/&/g, "");
+            // Letter ":"
+            slug = slug.replace(/:/g, "");
             // Letter "-"
             slug = slug.replace(/-/g, "");
             // Letter "d"
@@ -38,7 +40,6 @@ export default {
                 this.filterOptionsDesarrolladora = stringOptions.filter(
                     (v) => v.toLocaleLowerCase().indexOf(needle) > -1
                 );
-                console.log(this.options);
             });
         },
 

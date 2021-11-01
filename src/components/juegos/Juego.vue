@@ -187,7 +187,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.skeleton = false;
-    }, 1000);
+    }, 2000);
     //this.juegos.imagen = this.juegos.imagen+'?t='+new Date().getTime()
   },
   props: {

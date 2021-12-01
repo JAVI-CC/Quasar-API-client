@@ -1,6 +1,6 @@
 <p align="center"><img src="public/capturas/logo.png" width="400"></p>
 
-<p>Quasar Framework with VueJs application web responsive and PWA that contains interface web, user registers and the application connected to a Laravel API <a href="https://laravelapijuegos.herokuapp.com/api/juegos" target="_blank"> https://laravelapijuegos.herokuapp.com</a></p>
+<p>Quasar Framework with VueJs application web responsive and PWA that contains interface web, user registers and the application connected to a Laravel API <a href="https://laraveljuegosapi.herokuapp.com/api/juegos" target="_blank"> https://laraveljuegosapi.herokuapp.com</a></p>
 
 <p>Project Laravel Api Server: <a href="https://github.com/JAVI-CC/Laravel-API-Server" target="_blank">https://github.com/JAVI-CC/Laravel-API-Server</a></p>
 

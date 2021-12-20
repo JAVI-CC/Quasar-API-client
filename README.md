@@ -1,3 +1,6 @@
+<h1><a href="https://github.com/JAVI-CC/VUE3-API-client">Important new version now available with VUE 3 !!!</a></h1>
+<span>New version: </span><a href="https://github.com/JAVI-CC/VUE3-API-client">https://github.com/JAVI-CC/VUE3-API-client</a>
+<br><br><br>
 <p align="center"><img src="public/capturas/logo.png" width="400"></p>
 
 <p>Quasar Framework with VueJs application web responsive and PWA that contains interface web, user registers and the application connected to a Laravel API <a href="https://laraveljuegosapi.herokuapp.com/api/juegos" target="_blank"> https://laraveljuegosapi.herokuapp.com</a></p>
